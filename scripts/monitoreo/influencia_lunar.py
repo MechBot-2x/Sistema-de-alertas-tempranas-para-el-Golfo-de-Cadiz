@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🌙 INFLUENCIA LUNAR - Versión simplificada sin ephem
+🌙 INFLUENCIA LUNAR - Cálculos simplificados
 """
 
 from datetime import datetime
@@ -16,9 +16,8 @@ class LunarInfluenceCalculator:
     def calcular_fase_lunar(self, fecha):
         """Calcular fase lunar aproximada"""
         try:
-            # Cálculo simplificado de fase lunar
             dias_ciclo = 29.53
-            fecha_referencia = datetime(2024, 1, 11)  # Luna nueva conocida
+            fecha_referencia = datetime(2024, 1, 11)
             dias_desde_referencia = (fecha - fecha_referencia).days
             
             fase = (dias_desde_referencia % dias_ciclo) / dias_ciclo
@@ -48,7 +47,6 @@ class LunarInfluenceCalculator:
             fase_data = self.calcular_fase_lunar(fecha)
             fase = fase_data.get('fase', 0.5)
             
-            # Influencia basada en fase lunar
             influencia = abs(math.sin(fase * 2 * math.pi))
             
             return {

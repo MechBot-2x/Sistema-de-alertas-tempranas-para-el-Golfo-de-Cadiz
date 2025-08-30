@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🌍 SISTEMA SÍSMICO CÓSMICO - Monitorización avanzada con análisis de energía telúrica
+🌍 SISTEMA SÍSMICO CÓSMICO - Monitorización avanzada
 """
 
 import requests
@@ -15,21 +15,17 @@ class SismicMonitorCosmico:
     
     def __init__(self):
         self.fuentes = {
-            'usgs': 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson',
-            'ign': 'https://www.ign.es/web/ign/portal/sis-catalogo-terremotos'
+            'usgs': 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson'
         }
         
     def obtener_sismos_cosmicos(self, dias=3):
         """Obtener sismos con análisis de energía telúrica"""
         try:
-            # Primero intentar con USGS
             sismos = self._obtener_usgs_data()
             
             if not sismos:
-                # Fallback a IGN
-                sismos = self._obtener_ign_data()
+                sismos = self._sismos_simulados_cosmicos()
             
-            # Filtrar por tiempo y añadir análisis cósmico
             sismos_filtrados = []
             for sismo in sismos:
                 if self._es_reciente(sismo, dias):
@@ -51,7 +47,7 @@ class SismicMonitorCosmico:
                 datos = response.json()
                 sismos = []
                 
-                for feature in datos['features'][:50]:  # Limitar a 50
+                for feature in datos['features'][:20]:
                     prop = feature['properties']
                     geo = feature['geometry']
                     
@@ -71,14 +67,8 @@ class SismicMonitorCosmico:
         except:
             return []
     
-    def _obtener_ign_data(self):
-        """Obtener datos de IGN (simulado)"""
-        # Implementar parsing real del IGN aquí
-        return self._sismos_simulados_cosmicos()
-    
     def _calcular_energia_telurica(self, magnitud, profundidad):
         """Calcular energía telúrica cósmica"""
-        # Fórmula cósmica: energía = magnitud^2 / max(1, profundidad)
         energia = (magnitud ** 2) / max(1, profundidad/10)
         return round(min(energia, 10.0), 2)
     
@@ -123,18 +113,6 @@ class SismicMonitorCosmico:
                 'energia_telurica': round(1.5 + random.uniform(0, 2.0), 2),
                 'nivel_energia': 'MEDIA_COSMICA',
                 'riesgo_cosmico': round(0.3 + random.uniform(0, 0.3), 2)
-            },
-            {
-                'magnitud': round(3.0 + random.uniform(0, 1.0), 1),
-                'lugar': 'Costa de Huelva - Flujo Telúrico',
-                'timestamp': int((datetime.now() - timedelta(hours=2)).timestamp() * 1000),
-                'latitud': round(37.2 + random.uniform(-0.3, 0.3), 3),
-                'longitud': round(-7.0 + random.uniform(-0.3, 0.3), 3),
-                'profundidad': round(15 + random.uniform(0, 15), 1),
-                'fuente': 'SISTEMA_COSMICO',
-                'energia_telurica': round(2.2 + random.uniform(0, 1.5), 2),
-                'nivel_energia': 'MEDIA_COSMICA',
-                'riesgo_cosmico': round(0.4 + random.uniform(0, 0.2), 2)
             }
         ]
     
@@ -143,9 +121,9 @@ class SismicMonitorCosmico:
         try:
             sismos = self.obtener_sismos_cosmicos(dias)
             
-            # Coordenadas del Golfo de Cádiz ampliadas (área más grande)
-            lat_min, lat_max = 35.0, 38.5  # Desde Marruecos hasta Huelva
-            lon_min, lon_max = -9.5, -5.0  # Desde Portugal hasta Estrecho
+            # Coordenadas ampliadas del Golfo de Cádiz
+            lat_min, lat_max = 35.0, 38.5
+            lon_min, lon_max = -9.5, -5.0
             
             sismos_golfo = [
                 s for s in sismos
