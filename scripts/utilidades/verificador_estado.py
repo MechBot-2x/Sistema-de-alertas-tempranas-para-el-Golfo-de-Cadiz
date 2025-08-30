@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-✅ VERIFICADOR DE ESTADO DEL SISTEMA
+✅ VERIFICADOR DE ESTADO DEL SISTEMA - Mejorado
 """
 
-import logging
 import sys
+import subprocess
 
 def verificar_sistema():
     """Verificar que todo funciona"""
@@ -17,14 +17,20 @@ def verificar_sistema():
     try:
         import requests
         print("📡 Requests: ✅ OK")
-    except:
-        print("📡 Requests: ❌ FALLO")
+    except ImportError:
+        print("📡 Requests: ❌ FALLO - Ejecuta: pip install requests")
     
     try:
         import telegram
         print("🤖 Telegram: ✅ OK")
-    except:
-        print("🤖 Telegram: ⚠️ No instalado")
+    except ImportError:
+        print("🤖 Telegram: ⚠️ No instalado - Ejecuta: pip install python-telegram-bot")
+    
+    try:
+        from dotenv import load_dotenv
+        print("🔧 Dotenv: ✅ OK")
+    except ImportError:
+        print("🔧 Dotenv: ⚠️ No instalado - Ejecuta: pip install python-dotenv")
     
     print("=== 🎯 VERIFICACIÓN COMPLETADA ===")
 

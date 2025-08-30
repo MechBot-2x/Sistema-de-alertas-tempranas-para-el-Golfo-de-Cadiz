@@ -1,38 +1,7 @@
-# Python
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
-*.so
-.Python
-
-# Environment
 .env
-.venv/
 venv/
-env/
-
-# Logs
-*.log
 logs/
-*.logs
-
-# Data
-*.csv
-*.json
-*.sqlite3
-
-# Backup
-backups/
-*.backup
-*.tmp
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+*.log
