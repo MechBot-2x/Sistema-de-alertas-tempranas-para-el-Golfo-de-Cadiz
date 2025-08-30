@@ -1,0 +1,104 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Alertas Tempranas - Golfo de Cádiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .hero { 
+            text-align: center; 
+            padding: 4rem 2rem; 
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            margin: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .stats { 
+            display: flex; 
+            justify-content: center; 
+            gap: 2rem; 
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        .stat { 
+            background: rgba(255,255,255,0.1); 
+            padding: 1.5rem; 
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            min-width: 150px;
+        }
+        .number { display: block; font-size: 2.5rem; font-weight: 700; }
+        .alert-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 1.5rem; 
+            margin: 2rem 0;
+        }
+        .alert-card { 
+            background: rgba(255,255,255,0.1); 
+            padding: 1.5rem; 
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border-left: 4px solid #4CAF50;
+        }
+        .alert-card.tsunami { border-left-color: #dc3545; }
+        .alert-card.sismica { border-left-color: #fd7e14; }
+        .alert-card.meteorologica { border-left-color: #20c997; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .stats { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🌊 Sistema de Alertas Tempranas</h1>
+            <p>Protegiendo el Golfo de Cádiz 24/7</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="number">0</span>
+                    <span>Alertas Activas</span>
+                </div>
+                <div class="stat">
+                    <span class="number">45,000+</span>
+                    <span>Personas Protegidas</span>
+                </div>
+                <div class="stat">
+                    <span class="number">28s</span>
+                    <span>Tiempo Respuesta</span>
+                </div>
+            </div>
+
+            <div class="alert-grid">
+                <div class="alert-card tsunami">
+                    <h3>🌊 Tsunami</h3>
+                    <p>Estado: Normal</p>
+                    <small>Umbral: >6.5M</small>
+                </div>
+                <div class="alert-card sismica">
+                    <h3>🌍 Sísmica</h3>
+                    <p>Estado: Estable</p>
+                    <small>Umbral: >5.0M</small>
+                </div>
+                <div class="alert-card meteorologica">
+                    <h3>🌤️ Meteorológica</h3>
+                    <p>Estado: Buena</p>
+                    <small>Olas: <3m</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
