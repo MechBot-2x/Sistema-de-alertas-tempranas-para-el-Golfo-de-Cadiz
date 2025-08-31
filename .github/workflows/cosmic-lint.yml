@@ -1,0 +1,2 @@
+- name: 📏 Run Flake8 con Compasión
+  run: flake8 scripts/ --max-line-length=88 --extend-ignore=E203,C901,W293,F401
