@@ -7,7 +7,7 @@ Usando solo las APIs que ya tenemos funcionando
 import time
 import logging
 from datetime import datetime
-from scripts.datos.copernicus_simple import CopernicusSimple
+from scripts.datos.copernicus_simple import CopernicusSimpleClient
 from scripts.datos.aemet_client import MonitorAEMETGolfoCadiz
 from scripts.alertas.telegram_advanced import NotificadorAvanzado
 
@@ -25,7 +25,7 @@ class SistemaOptimizadoFinal:
     """Sistema final optimizado con lo que funciona"""
     
     def __init__(self):
-        self.client_copernicus = CopernicusSimple()
+        self.client_copernicus = CopernicusSimpleClient()
         self.client_aemet = MonitorAEMETGolfoCadiz()
         self.notificador = NotificadorAvanzado()
         
