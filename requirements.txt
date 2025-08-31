@@ -1,11 +1,9 @@
 requests==2.31.0
-python-telegram-bot==20.7
 python-dotenv==1.0.0
 beautifulsoup4==4.12.2
 schedule==1.2.0
-numpy==1.24.3
 pandas==2.0.3
 ephem==4.1.5
-astropy==5.3.4
-scipy==1.11.4
 matplotlib==3.7.4
+python-telegram-bot==20.7
+copernicus-marine-client==0.8.0
