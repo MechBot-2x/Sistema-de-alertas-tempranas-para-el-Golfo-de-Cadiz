@@ -21,3 +21,41 @@ Sistema profesional de monitorización y alertas para el Golfo de Cádiz.
 
 ## 📦 Instalación
 
+```bash
+git clone https://github.com/tuusuario/sistema-alertas-golfo-cadiz.git
+cd sistema-alertas-golfo-cadiz
+
+python -m venv venv
+source venv/bin/activate
+
+pip install -r requirements.txt
+```
+
+## ⚙️ Configuración
+
+1. Copiar `.env.example` a `.env`
+2. Configurar credenciales API
+3. Ejecutar `python sistema_principal.py`
+
+## 🚀 Uso
+
+```bash
+# Sistema principal
+python sistema_principal.py
+
+# Solo Copernicus
+python -m scripts.datos.copernicus_simple
+
+# Solo sismógrafo  
+python -m scripts.datos.sismografo
+```
+
+## 📞 Contacto
+
+- 📧 Email: ia.mechmind@gmail.com
+- 🤖 Telegram: @Tsunamis_bot
+- 🌐 AEMET: https://opendata.aemet.es
+
+## 📜 Licencia
+
+MIT License - Ver [LICENSE](LICENSE) para detalles.
