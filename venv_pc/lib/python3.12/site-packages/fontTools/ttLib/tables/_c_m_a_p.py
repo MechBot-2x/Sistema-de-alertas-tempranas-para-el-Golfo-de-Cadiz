@@ -526,7 +526,7 @@ class cmap_format_2(CmapSubtable):
         # referenced by another subheader.
         # The only subheader that will be referenced by more than one first-byte value is the subheader
         # that maps the entire range of glyphID values to glyphIndex 0, e.g notdef:
-        # 	 {firstChar 0, EntryCount 0,idDelta 0,idRangeOffset xx}
+        #      {firstChar 0, EntryCount 0,idDelta 0,idRangeOffset xx}
         # A byte being mapped though a subheader is treated as in index into a mapping of array index to font glyphIndex.
         # A subheader specifies a subrange within (0...256) by the
         # firstChar and EntryCount values. If the byte value is outside the subrange, then the glyphIndex is zero
@@ -542,10 +542,10 @@ class cmap_format_2(CmapSubtable):
         # the index offset = 66-64 = 2.
         # The subrange of the glyphIndexArray starting at 0x0252 bytes from the idRangeOffset word is:
         # [glyphIndexArray index], [subrange array index] = glyphIndex
-        # [256], [0]=1 	from charcode [129, 64]
-        # [257], [1]=2  	from charcode [129, 65]
-        # [258], [2]=3  	from charcode [129, 66]
-        # [259], [3]=4  	from charcode [129, 67]
+        # [256], [0]=1     from charcode [129, 64]
+        # [257], [1]=2      from charcode [129, 65]
+        # [258], [2]=3      from charcode [129, 66]
+        # [259], [3]=4      from charcode [129, 67]
         # So, the glyphIndex = 3 from the array. Then if idDelta is not zero and the glyph ID is not zero,
         # add it to the glyphID to get the final glyphIndex
         # value. In this case the final glyph index = 3+ 42 -> 45 for the final glyphIndex. Whew!

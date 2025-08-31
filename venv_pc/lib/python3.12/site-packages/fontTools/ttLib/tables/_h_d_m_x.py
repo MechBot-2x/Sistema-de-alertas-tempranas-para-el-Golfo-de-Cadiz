@@ -5,10 +5,10 @@ import array
 from collections.abc import Mapping
 
 hdmxHeaderFormat = """
-	>   # big endian!
-	version:	H
-	numRecords:	H
-	recordSize:	l
+    >   # big endian!
+    version:    H
+    numRecords:    H
+    recordSize:    l
 """
 
 

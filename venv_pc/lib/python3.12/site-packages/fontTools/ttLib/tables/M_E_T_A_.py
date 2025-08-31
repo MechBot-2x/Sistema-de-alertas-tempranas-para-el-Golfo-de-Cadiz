@@ -6,38 +6,38 @@ import struct
 
 
 METAHeaderFormat = """
-		>	# big endian
-		tableVersionMajor:			H
-		tableVersionMinor:			H
-		metaEntriesVersionMajor:	H
-		metaEntriesVersionMinor:	H
-		unicodeVersion:				L
-		metaFlags:					H
-		nMetaRecs:					H
+        >    # big endian
+        tableVersionMajor:            H
+        tableVersionMinor:            H
+        metaEntriesVersionMajor:    H
+        metaEntriesVersionMinor:    H
+        unicodeVersion:                L
+        metaFlags:                    H
+        nMetaRecs:                    H
 """
 # This record is followed by nMetaRecs of METAGlyphRecordFormat.
 # This in turn is followd by as many METAStringRecordFormat entries
 # as specified by the METAGlyphRecordFormat entries
 # this is followed by the strings specifried in the  METAStringRecordFormat
 METAGlyphRecordFormat = """
-		>	# big endian
-		glyphID:			H
-		nMetaEntry:			H
+        >    # big endian
+        glyphID:            H
+        nMetaEntry:            H
 """
 # This record is followd by a variable data length field:
-# 	USHORT or ULONG	hdrOffset
+#     USHORT or ULONG    hdrOffset
 # Offset from start of META table to the beginning
 # of this glyphs array of ns Metadata string entries.
 # Size determined by metaFlags field
 # METAGlyphRecordFormat entries must be sorted by glyph ID
 
 METAStringRecordFormat = """
-		>	# big endian
-		labelID:			H
-		stringLen:			H
+        >    # big endian
+        labelID:            H
+        stringLen:            H
 """
 # This record is followd by a variable data length field:
-# 	USHORT or ULONG	stringOffset
+#     USHORT or ULONG    stringOffset
 # METAStringRecordFormat entries must be sorted in order of labelID
 # There may be more than one entry with the same labelID
 # There may be more than one strign with the same content.
