@@ -12,9 +12,9 @@ This code was originally copied from
 `ufoLib <https://github.com/unified-font-object/ufoLib/blob/8747da7/Lib/ufoLib/filenames.py>`_
 by Tal Leming and is copyright (c) 2005-2016, The RoboFab Developers:
 
--	Erik van Blokland
--	Tal Leming
--	Just van Rossum
+-    Erik van Blokland
+-    Tal Leming
+-    Just van Rossum
 """
 
 illegalCharacters = r"\" * + / : < > ? [ \ ] | \0".split(" ")
@@ -144,22 +144,22 @@ def handleClash1(userName, existing=[], prefix="", suffix=""):
 
     >>> e = list(existing)
     >>> handleClash1(userName="A" * 5, existing=e,
-    ...		prefix=prefix, suffix=suffix) == (
-    ... 	'00000.AAAAA000000000000001.0000000000')
+    ...        prefix=prefix, suffix=suffix) == (
+    ...     '00000.AAAAA000000000000001.0000000000')
     True
 
     >>> e = list(existing)
     >>> e.append(prefix + "aaaaa" + "1".zfill(15) + suffix)
     >>> handleClash1(userName="A" * 5, existing=e,
-    ...		prefix=prefix, suffix=suffix) == (
-    ... 	'00000.AAAAA000000000000002.0000000000')
+    ...        prefix=prefix, suffix=suffix) == (
+    ...     '00000.AAAAA000000000000002.0000000000')
     True
 
     >>> e = list(existing)
     >>> e.append(prefix + "AAAAA" + "2".zfill(15) + suffix)
     >>> handleClash1(userName="A" * 5, existing=e,
-    ...		prefix=prefix, suffix=suffix) == (
-    ... 	'00000.AAAAA000000000000001.0000000000')
+    ...        prefix=prefix, suffix=suffix) == (
+    ...     '00000.AAAAA000000000000001.0000000000')
     True
     """
     # if the prefix length + user name length + suffix length + 15 is at
@@ -201,19 +201,19 @@ def handleClash2(existing=[], prefix="", suffix=""):
 
     >>> e = list(existing)
     >>> handleClash2(existing=e, prefix=prefix, suffix=suffix) == (
-    ... 	'00000.100.0000000000')
+    ...     '00000.100.0000000000')
     True
 
     >>> e = list(existing)
     >>> e.remove(prefix + "1" + suffix)
     >>> handleClash2(existing=e, prefix=prefix, suffix=suffix) == (
-    ... 	'00000.1.0000000000')
+    ...     '00000.1.0000000000')
     True
 
     >>> e = list(existing)
     >>> e.remove(prefix + "2" + suffix)
     >>> handleClash2(existing=e, prefix=prefix, suffix=suffix) == (
-    ... 	'00000.2.0000000000')
+    ...     '00000.2.0000000000')
     True
     """
     # calculate the longest possible string

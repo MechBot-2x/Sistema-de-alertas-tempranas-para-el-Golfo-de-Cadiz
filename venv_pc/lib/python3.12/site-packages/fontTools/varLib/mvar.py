@@ -27,14 +27,14 @@ MVAR_ENTRIES = {
     "stro": ("OS/2", "yStrikeoutPosition"),  # strikeout offset
     "unds": ("post", "underlineThickness"),  # underline size
     "undo": ("post", "underlinePosition"),  # underline offset
-    #'gsp0': ('gasp', 'gaspRange[0].rangeMaxPPEM'),	 # gaspRange[0]
-    #'gsp1': ('gasp', 'gaspRange[1].rangeMaxPPEM'),	 # gaspRange[1]
-    #'gsp2': ('gasp', 'gaspRange[2].rangeMaxPPEM'),	 # gaspRange[2]
-    #'gsp3': ('gasp', 'gaspRange[3].rangeMaxPPEM'),	 # gaspRange[3]
-    #'gsp4': ('gasp', 'gaspRange[4].rangeMaxPPEM'),	 # gaspRange[4]
-    #'gsp5': ('gasp', 'gaspRange[5].rangeMaxPPEM'),	 # gaspRange[5]
-    #'gsp6': ('gasp', 'gaspRange[6].rangeMaxPPEM'),	 # gaspRange[6]
-    #'gsp7': ('gasp', 'gaspRange[7].rangeMaxPPEM'),	 # gaspRange[7]
-    #'gsp8': ('gasp', 'gaspRange[8].rangeMaxPPEM'),	 # gaspRange[8]
-    #'gsp9': ('gasp', 'gaspRange[9].rangeMaxPPEM'),	 # gaspRange[9]
+    #'gsp0': ('gasp', 'gaspRange[0].rangeMaxPPEM'),     # gaspRange[0]
+    #'gsp1': ('gasp', 'gaspRange[1].rangeMaxPPEM'),     # gaspRange[1]
+    #'gsp2': ('gasp', 'gaspRange[2].rangeMaxPPEM'),     # gaspRange[2]
+    #'gsp3': ('gasp', 'gaspRange[3].rangeMaxPPEM'),     # gaspRange[3]
+    #'gsp4': ('gasp', 'gaspRange[4].rangeMaxPPEM'),     # gaspRange[4]
+    #'gsp5': ('gasp', 'gaspRange[5].rangeMaxPPEM'),     # gaspRange[5]
+    #'gsp6': ('gasp', 'gaspRange[6].rangeMaxPPEM'),     # gaspRange[6]
+    #'gsp7': ('gasp', 'gaspRange[7].rangeMaxPPEM'),     # gaspRange[7]
+    #'gsp8': ('gasp', 'gaspRange[8].rangeMaxPPEM'),     # gaspRange[8]
+    #'gsp9': ('gasp', 'gaspRange[9].rangeMaxPPEM'),     # gaspRange[9]
 }

@@ -5,11 +5,11 @@ import sys
 import array
 
 GPKGFormat = """
-		>	# big endian
-		version:	H
-		flags:	H
-		numGMAPs:		H
-		numGlyplets:		H
+        >    # big endian
+        version:    H
+        flags:    H
+        numGMAPs:        H
+        numGlyplets:        H
 """
 # psFontName is a byte string which follows the record above. This is zero padded
 # to the beginning of the records array. The recordsOffsst is 32 bit aligned.

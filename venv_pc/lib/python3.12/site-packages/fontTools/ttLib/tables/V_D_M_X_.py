@@ -4,35 +4,35 @@ from fontTools.misc.textTools import safeEval
 import struct
 
 VDMX_HeaderFmt = """
-	>                 # big endian
-	version:     H    # Version number (0 or 1)
-	numRecs:     H    # Number of VDMX groups present
-	numRatios:   H    # Number of aspect ratio groupings
+    >                 # big endian
+    version:     H    # Version number (0 or 1)
+    numRecs:     H    # Number of VDMX groups present
+    numRatios:   H    # Number of aspect ratio groupings
 """
 # the VMDX header is followed by an array of RatRange[numRatios] (i.e. aspect
 # ratio ranges);
 VDMX_RatRangeFmt = """
-	>                 # big endian
-	bCharSet:    B    # Character set
-	xRatio:      B    # Value to use for x-Ratio
-	yStartRatio: B    # Starting y-Ratio value
-	yEndRatio:   B    # Ending y-Ratio value
+    >                 # big endian
+    bCharSet:    B    # Character set
+    xRatio:      B    # Value to use for x-Ratio
+    yStartRatio: B    # Starting y-Ratio value
+    yEndRatio:   B    # Ending y-Ratio value
 """
 # followed by an array of offset[numRatios] from start of VDMX table to the
 # VDMX Group for this ratio range (offsets will be re-calculated on compile);
 # followed by an array of Group[numRecs] records;
 VDMX_GroupFmt = """
-	>                 # big endian
-	recs:        H    # Number of height records in this group
-	startsz:     B    # Starting yPelHeight
-	endsz:       B    # Ending yPelHeight
+    >                 # big endian
+    recs:        H    # Number of height records in this group
+    startsz:     B    # Starting yPelHeight
+    endsz:       B    # Ending yPelHeight
 """
 # followed by an array of vTable[recs] records.
 VDMX_vTableFmt = """
-	>                 # big endian
-	yPelHeight:  H    # yPelHeight to which values apply
-	yMax:        h    # Maximum value (in pels) for this yPelHeight
-	yMin:        h    # Minimum value (in pels) for this yPelHeight
+    >                 # big endian
+    yPelHeight:  H    # yPelHeight to which values apply
+    yMax:        h    # Maximum value (in pels) for this yPelHeight
+    yMin:        h    # Minimum value (in pels) for this yPelHeight
 """
 
 

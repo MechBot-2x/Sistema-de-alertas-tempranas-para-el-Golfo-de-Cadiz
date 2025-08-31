@@ -421,9 +421,9 @@ def iup_contour_optimize(
         solution.remove(-1)
 
         # if not forced <= solution:
-        # 	print("coord", coords)
-        # 	print("deltas", deltas)
-        # 	print("len", len(deltas))
+        #     print("coord", coords)
+        #     print("deltas", deltas)
+        #     print("len", len(deltas))
         assert forced <= solution, (forced, solution)
 
         deltas = [deltas[i] if i in solution else None for i in range(n)]
@@ -451,9 +451,9 @@ def iup_contour_optimize(
                     best_sol, best_cost = solution, cost
 
         # if not forced <= best_sol:
-        # 	print("coord", coords)
-        # 	print("deltas", deltas)
-        # 	print("len", len(deltas))
+        #     print("coord", coords)
+        #     print("deltas", deltas)
+        #     print("len", len(deltas))
         assert forced <= best_sol, (forced, best_sol)
 
         deltas = [deltas[i] if i in best_sol else None for i in range(n)]

@@ -147,7 +147,7 @@ def computeMegaCmap(merger, cmapTables):
                             if glyphSets[idx] is None:
                                 glyphSets[idx] = merger.fonts[idx].getGlyphSet()
                         # if _glyphsAreSame(glyphSets[oldFontIdx], glyphSets[fontIdx], oldgid, gid):
-                        # 	continue
+                        #     continue
                     merger.duplicateGlyphsPerFont[fontIdx][oldgid] = gid
                 elif merger.duplicateGlyphsPerFont[fontIdx][oldgid] != gid:
                     # Char previously mapped to oldgid but oldgid is already remapped to a different

@@ -33,18 +33,18 @@ commentRE = re.compile(b"%[^\n\r]*")
 
 # XXX This not entirely correct as it doesn't allow *nested* embedded parens:
 stringPat = rb"""
-	\(
-		(
-			(
-				[^()]*   \   [()]
-			)
-			|
-			(
-				[^()]*  \(   [^()]*  \)
-			)
-		)*
-		[^()]*
-	\)
+    \(
+        (
+            (
+                [^()]*   \   [()]
+            )
+            |
+            (
+                [^()]*  \(   [^()]*  \)
+            )
+        )*
+        [^()]*
+    \)
 """
 stringPat = b"".join(stringPat.split())
 stringRE = re.compile(stringPat)

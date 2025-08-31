@@ -25,15 +25,15 @@ import logging
 log = logging.getLogger(__name__)
 
 ebdtTableVersionFormat = """
-	> # big endian
-	version: 16.16F
+    > # big endian
+    version: 16.16F
 """
 
 ebdtComponentFormat = """
-	> # big endian
-	glyphCode: H
-	xOffset:   b
-	yOffset:   b
+    > # big endian
+    glyphCode: H
+    xOffset:   b
+    yOffset:   b
 """
 
 
@@ -452,8 +452,8 @@ class BitmapGlyph(object):
         self.ttFont = ttFont
         # TODO Currently non-lazy decompilation is untested here...
         # if not ttFont.lazy:
-        # 	self.decompile()
-        # 	del self.data
+        #     self.decompile()
+        #     del self.data
 
     def __getattr__(self, attr):
         # Allow lazy decompile.
@@ -583,7 +583,7 @@ class BitAlignedBitmapMixin(object):
         # Example of data cut. Data cut represented in x's.
         # '|' represents byte boundary.
         # data = ...0XX|XXXXXX00|000... => XXXXXXXX
-        # 		or
+        #         or
         # data = ...0XX|XXXX0000|000... => XXXXXX00
         #   or
         # data = ...000|XXXXXXXX|000... => XXXXXXXX

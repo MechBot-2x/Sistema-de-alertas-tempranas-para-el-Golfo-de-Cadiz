@@ -4,25 +4,25 @@ from . import DefaultTable
 import base64
 
 DSIG_HeaderFormat = """
-	> # big endian
-	ulVersion:      L
-	usNumSigs:      H
-	usFlag:         H
+    > # big endian
+    ulVersion:      L
+    usNumSigs:      H
+    usFlag:         H
 """
 # followed by an array of usNumSigs DSIG_Signature records
 DSIG_SignatureFormat = """
-	> # big endian
-	ulFormat:       L
-	ulLength:       L # length includes DSIG_SignatureBlock header
-	ulOffset:       L
+    > # big endian
+    ulFormat:       L
+    ulLength:       L # length includes DSIG_SignatureBlock header
+    ulOffset:       L
 """
 # followed by an array of usNumSigs DSIG_SignatureBlock records,
 # each followed immediately by the pkcs7 bytes
 DSIG_SignatureBlockFormat = """
-	> # big endian
-	usReserved1:    H
-	usReserved2:    H
-	cbSignature:    l # length of following raw pkcs7 data
+    > # big endian
+    usReserved1:    H
+    usReserved2:    H
+    cbSignature:    l # length of following raw pkcs7 data
 """
 
 #

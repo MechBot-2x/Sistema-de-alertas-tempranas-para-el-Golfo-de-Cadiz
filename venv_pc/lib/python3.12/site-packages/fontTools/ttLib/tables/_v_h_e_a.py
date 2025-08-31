@@ -9,24 +9,24 @@ import math
 
 
 vheaFormat = """
-		>	# big endian
-		tableVersion:		L
-		ascent:			h
-		descent:		h
-		lineGap:		h
-		advanceHeightMax:	H
-		minTopSideBearing:	h
-		minBottomSideBearing:	h
-		yMaxExtent:		h
-		caretSlopeRise:		h
-		caretSlopeRun:		h
-		caretOffset:		h
-		reserved1:		h
-		reserved2:		h
-		reserved3:		h
-		reserved4:		h
-		metricDataFormat:	h
-		numberOfVMetrics:	H
+        >    # big endian
+        tableVersion:        L
+        ascent:            h
+        descent:        h
+        lineGap:        h
+        advanceHeightMax:    H
+        minTopSideBearing:    h
+        minBottomSideBearing:    h
+        yMaxExtent:        h
+        caretSlopeRise:        h
+        caretSlopeRun:        h
+        caretOffset:        h
+        reserved1:        h
+        reserved2:        h
+        reserved3:        h
+        reserved4:        h
+        metricDataFormat:    h
+        numberOfVMetrics:    H
 """
 
 

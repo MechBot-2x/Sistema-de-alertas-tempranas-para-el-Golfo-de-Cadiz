@@ -222,40 +222,40 @@ class Resource(object):
 
 
 ResourceForkHeader = """
-		> # big endian
-		dataOffset:     L
-		mapOffset:      L
-		dataLen:        L
-		mapLen:         L
+        > # big endian
+        dataOffset:     L
+        mapOffset:      L
+        dataLen:        L
+        mapLen:         L
 """
 
 ResourceForkHeaderSize = sstruct.calcsize(ResourceForkHeader)
 
 ResourceMapHeader = """
-		> # big endian
-		attr:              H
-		typeListOffset:    H
-		nameListOffset:    H
+        > # big endian
+        attr:              H
+        typeListOffset:    H
+        nameListOffset:    H
 """
 
 ResourceMapHeaderSize = sstruct.calcsize(ResourceMapHeader)
 
 ResourceTypeItem = """
-		> # big endian
-		type:              4s
-		numRes:            H
-		refListOffset:     H
+        > # big endian
+        type:              4s
+        numRes:            H
+        refListOffset:     H
 """
 
 ResourceTypeItemSize = sstruct.calcsize(ResourceTypeItem)
 
 ResourceRefItem = """
-		> # big endian
-		id:                h
-		nameOffset:        h
-		attr:              B
-		dataOffset:        3s
-		reserved:          L
+        > # big endian
+        id:                h
+        nameOffset:        h
+        attr:              B
+        dataOffset:        3s
+        reserved:          L
 """
 
 ResourceRefItemSize = sstruct.calcsize(ResourceRefItem)
