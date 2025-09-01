@@ -4,12 +4,10 @@
 Documentación: https://data.marine.copernicus.eu/help
 """
 
-import json
 import logging
 import os
 from datetime import datetime, timedelta
 
-import pandas as pd
 import requests
 from dotenv import load_dotenv
 

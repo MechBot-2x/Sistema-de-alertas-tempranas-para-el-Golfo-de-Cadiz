@@ -4,8 +4,6 @@
 """
 
 import logging
-import time
-from datetime import datetime
 
 from scripts.datos.copernicus_client import CopernicusMarineClient
 from scripts.monitoreo.sistema_principal_mejorado import SistemaResiliente

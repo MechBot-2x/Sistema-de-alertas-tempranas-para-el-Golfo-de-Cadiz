@@ -1,0 +1,34 @@
+def obtener_datos_oceanicos(self):
+    """Obtener datos oceánicos de Copernicus Marine (REAL)"""
+    try:
+        # Intentar obtener datos reales de Copernicus
+        from scripts.copernicus_real import CopernicusRealClient
+        client = CopernicusRealClient()
+        datos_reales = client.obtener_datos_golfo_cadiz()
+        
+        # Calcular riesgo basado en datos reales
+        riesgo = self.calcular_riesgo_tsunami_real(
+            datos_reales['oleaje_altura'],
+            datos_reales['nivel_mar']
+        )
+        
+        return {
+            'temperatura_agua': datos_reales['temperatura_agua'],
+            'oleaje_altura': datos_reales['oleaje_altura'],
+            'salinidad': datos_reales['salinidad'],
+            'nivel_mar': datos_reales['nivel_mar'],
+            'riesgo_tsunami': riesgo,
+            'origen': datos_reales['origen']
+        }
+        
+    except Exception as e:
+        logger.error(f"Error obteniendo datos oceánicos reales: {e}")
+        # Fallback a datos simulados
+        return {
+            'temperatura_agua': 19.0,
+            'oleaje_altura': 1.0,
+            'salinidad': 36.0,
+            'nivel_mar': 0.1,
+            'riesgo_tsunami': 0.1,
+            'origen': 'simulado_error'
+        }

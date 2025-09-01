@@ -3,13 +3,10 @@
 🌊 BOYAS INTELIGENTES 2025 - Conexión cósmica
 """
 
-import json
 import logging
 import math
 import random
 from datetime import datetime
-
-import requests
 
 
 class BoyasAvanzadas2025:

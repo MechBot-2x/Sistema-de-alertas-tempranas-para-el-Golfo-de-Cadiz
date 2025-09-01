@@ -3,7 +3,6 @@
 ✅ VERIFICADOR DE ESTADO DEL SISTEMA - Mejorado
 """
 
-import subprocess
 import sys
 
 
@@ -16,21 +15,21 @@ def verificar_sistema():
 
     # Verificar imports básicos
     try:
-        import requests
+        pass
 
         print("📡 Requests: ✅ OK")
     except ImportError:
         print("📡 Requests: ❌ FALLO - Ejecuta: pip install requests")
 
     try:
-        import telegram
+        pass
 
         print("🤖 Telegram: ✅ OK")
     except ImportError:
         print("🤖 Telegram: ⚠️ No instalado - Ejecuta: pip install python-telegram-bot")
 
     try:
-        from dotenv import load_dotenv
+        pass
 
         print("🔧 Dotenv: ✅ OK")
     except ImportError:

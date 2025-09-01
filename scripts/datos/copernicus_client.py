@@ -7,7 +7,6 @@ import logging
 import os
 from datetime import datetime, timedelta
 
-import requests
 from dotenv import load_dotenv
 
 # Cargar variables de entorno

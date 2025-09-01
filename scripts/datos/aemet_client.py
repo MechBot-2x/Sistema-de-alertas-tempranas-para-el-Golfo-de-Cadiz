@@ -4,11 +4,10 @@
 Sistema que funciona incluso cuando AEMET está lento/caído
 """
 
-import json
 import logging
 import os
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import requests
 from dotenv import load_dotenv

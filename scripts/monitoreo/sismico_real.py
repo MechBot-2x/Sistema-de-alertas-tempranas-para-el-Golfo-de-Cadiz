@@ -3,7 +3,6 @@
 🌍 MONITOR SÍSMICO USGS - Datos reales del Servicio Geológico de EE.UU.
 """
 
-import json
 import logging
 from datetime import datetime, timedelta
 

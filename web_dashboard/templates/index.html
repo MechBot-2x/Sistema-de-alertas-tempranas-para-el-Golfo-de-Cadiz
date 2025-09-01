@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Dashboard Sistema Alerta Temprana</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .stat {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .alert {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        .warning {
+            color: #feca57;
+        }
+        .success {
+            color: #1dd1a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌊 SISTEMA DE ALERTA TEMPRANA</h1>
+            <p>Monitorizando el Sol y el Océano para salvar vidas</p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h2>🌞 Actividad Solar</h2>
+                <div id="solar-stats">Cargando...</div>
+            </div>
+            
+            <div class="card">
+                <h2>🌊 Estado Oceánico</h2>
+                <div id="ocean-stats">Cargando...</div>
+            </div>
+            
+            <div class="card">
+                <h2>🚨 Alertas</h2>
+                <div id="alert-stats">Cargando...</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📈 Últimos Eventos</h2>
+            <div id="recent-events">Cargando...</div>
+        </div>
+    </div>
+
+    <script>
+        function actualizarDashboard() {
+            fetch('/api/estadisticas')
+                .then(response => response.json())
+                .then(data => {
+                    // Actualizar estadísticas solares
+                    document.getElementById('solar-stats').innerHTML = `
+                        <div class="stat">${data.llamaradas_m} M / ${data.llamaradas_x} X</div>
+                        <div>Índice Kp: ${data.indice_kp}</div>
+                        <div>Riesgo: <span class="${data.riesgo_solar > 0.5 ? 'alert' : 'success'}">${(data.riesgo_solar * 100).toFixed(0)}%</span></div>
+                    `;
+
+                    // Actualizar estadísticas oceánicas
+                    document.getElementById('ocean-stats').innerHTML = `
+                        <div class="stat">${data.temperatura_agua}°C</div>
+                        <div>Oleaje: ${data.oleaje_altura}m</div>
+                        <div>Riesgo Tsunami: <span class="${data.riesgo_tsunami > 0.5 ? 'alert' : 'success'}">${(data.riesgo_tsunami * 100).toFixed(0)}%</span></div>
+                    `;
+
+                    // Actualizar alertas
+                    document.getElementById('alert-stats').innerHTML = `
+                        <div class="stat">${data.total_alertas}</div>
+                        <div>Alertas activas: ${data.alertas_activas}</div>
+                    `;
+
+                    // Actualizar eventos recientes
+                    let eventosHTML = '';
+                    data.ultimas_alertas.forEach(alerta => {
+                        eventosHTML += `<div class="warning">🕒 ${alerta.fecha} - ${alerta.mensaje}</div>`;
+                    });
+                    document.getElementById('recent-events').innerHTML = eventosHTML;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('solar-stats').innerHTML = 'Error cargando datos';
+                });
+        }
+
+        // Actualizar cada 30 segundos
+        actualizarDashboard();
+        setInterval(actualizarDashboard, 30000);
+    </script>
+</body>
+</html>

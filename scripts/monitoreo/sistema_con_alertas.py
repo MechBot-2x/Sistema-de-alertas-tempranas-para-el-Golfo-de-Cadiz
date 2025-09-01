@@ -4,7 +4,6 @@
 """
 
 import logging
-import time
 from datetime import datetime
 
 from scripts.alertas.telegram_advanced import TelegramAdvancedBot

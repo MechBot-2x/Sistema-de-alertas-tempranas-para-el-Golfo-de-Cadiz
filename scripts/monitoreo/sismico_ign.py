@@ -3,11 +3,8 @@
 🌍 MONITOR SÍSMICO IGN - Versión optimizada para Termux
 """
 
-import json
 import logging
 from datetime import datetime, timedelta
-
-import requests
 
 
 class SismicMonitor:

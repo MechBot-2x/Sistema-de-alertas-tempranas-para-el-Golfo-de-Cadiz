@@ -3,9 +3,7 @@
 🌍 SISTEMA SÍSMICO CÓSMICO - Monitorización avanzada
 """
 
-import json
 import logging
-import math
 import random
 from datetime import datetime, timedelta
 
