@@ -3,9 +3,10 @@
 🧘 MEDITACIÓN TÉCNICA - Conexión consciente antes de codificar
 """
 
-import time
 import random
+import time
 from datetime import datetime
+
 
 class MeditacionTecnica:
     """Sistema de meditación para desarrolladores conscientes"""
@@ -19,14 +20,14 @@ class MeditacionTecnica:
             "🎯 Mi trabajo tiene impacto real",
             "🌈 Codifico con conciencia cósmica",
             "🕊️ La tecnología al servicio de la vida",
-            "🌟 Soy canal de soluciones divinas"
+            "🌟 Soy canal de soluciones divinas",
         ]
 
     def meditacion_rapida(self, segundos=60):
         """Meditación rápida antes de codificar"""
-        print("\n" + "="*50)
+        print("\n" + "=" * 50)
         print("🧘 INICIANDO MEDITACIÓN TÉCNICA")
-        print("="*50)
+        print("=" * 50)
 
         print(f"⏰ Tiempo: {segundos} segundos")
         print("💖 Enfoca tu intención...")
@@ -39,13 +40,13 @@ class MeditacionTecnica:
 
         try:
             for i in range(segundos, 0, -1):
-                print(f"🕰️ {i} segundos restantes", end='\r')
+                print(f"🕰️ {i} segundos restantes", end="\r")
                 time.sleep(1)
 
-            print("\n" + "="*50)
+            print("\n" + "=" * 50)
             print("🎉 MEDITACIÓN COMPLETADA")
             print("🚀 ¡Tu código ahora tiene poder cósmico!")
-            print("="*50)
+            print("=" * 50)
 
         except KeyboardInterrupt:
             print("\n\n🕊️ Meditación interrumpida - Tu intención fue sembrada")
@@ -60,9 +61,9 @@ class MeditacionTecnica:
         print(f"🌙 Fase lunar: {fase['nombre_fase']}")
         print(f"💫 Iluminación: {fase['iluminacion']}%")
 
-        if fase['nombre_fase'] == "Luna Nueva":
+        if fase["nombre_fase"] == "Luna Nueva":
             print("🎯 Perfecto para nuevos comienzos y proyectos")
-        elif fase['nombre_fase'] == "Luna Llena":
+        elif fase["nombre_fase"] == "Luna Llena":
             print("🎯 Ideal para completar y pulir código")
 
         self.meditacion_rapida(120)
@@ -70,7 +71,7 @@ class MeditacionTecnica:
     def ritual_diario(self):
         """Ritual diario de conexión técnica"""
         print("🔥 ENCENDIENDO EL FUEGO SAGRADO DEL CÓDIGO")
-        print("="*50)
+        print("=" * 50)
 
         print("1. 💖 Agradece la oportunidad de servir")
         print("2. 🌊 Conecta con las energías del Golfo")
@@ -79,6 +80,7 @@ class MeditacionTecnica:
         print("5. 🌟 Codifica con propósito")
 
         self.meditacion_rapida(180)
+
 
 if __name__ == "__main__":
     meditacion = MeditacionTecnica()

@@ -217,7 +217,8 @@ def configuracion_automatica():
         )
         if respuesta in ["s", "si", "sí", "y", "yes"]:
             print("🚀 Iniciando sistema de monitorización...")
-            from scripts.monitoreo.sistema_principal_mejorado import SistemaResiliente
+            from scripts.monitoreo.sistema_principal_mejorado import \
+                SistemaResiliente
 
             sistema = SistemaResiliente()
             sistema.ejecutar_continuamente()

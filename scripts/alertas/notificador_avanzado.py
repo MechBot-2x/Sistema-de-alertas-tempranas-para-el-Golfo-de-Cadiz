@@ -3,8 +3,10 @@
 📢 NOTIFICADOR AVANZADO - Sistema de alertas inteligentes
 """
 
-import requests
 from datetime import datetime
+
+import requests
+
 
 class NotificadorAvanzado:
     def __init__(self):
@@ -44,13 +46,13 @@ class NotificadorAvanzado:
         try:
             url = f"https://api.telegram.org/bot{self.telegram_token}/sendMessage"
             data = {
-                'chat_id': self.telegram_chat_id,
-                'text': mensaje,
-                'parse_mode': 'Markdown'
+                "chat_id": self.telegram_chat_id,
+                "text": mensaje,
+                "parse_mode": "Markdown",
             }
 
             response = requests.post(url, data=data, timeout=10)
-            if response.json().get('ok'):
+            if response.json().get("ok"):
                 print("✅ Alerta enviada por Telegram")
                 return True
 
@@ -59,14 +61,16 @@ class NotificadorAvanzado:
 
         return False
 
+
 # Uso inmediato
 if __name__ == "__main__":
     notificador = NotificadorAvanzado()
 
     # Obtener datos actuales
     from scripts.datos.copernicus_simple import CopernicusSimpleClient
+
     client = CopernicusSimpleClient()
     datos = client.obtener_datos_golfo_cadiz()
 
     # Enviar alerta
-    notificador.enviar_alerta_oleaje(datos['oleaje_altura'])
+    notificador.enviar_alerta_oleaje(datos["oleaje_altura"])

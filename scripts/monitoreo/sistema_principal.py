@@ -4,18 +4,19 @@
 Versión compatible con Termux
 """
 
-import time
 import logging
+import time
 from datetime import datetime
-from scripts.monitoreo.sismico_ign import SismicMonitor
+
 from scripts.monitoreo.datos_mareas import MarineMonitor
 from scripts.monitoreo.influencia_lunar import LunarInfluenceCalculator
+from scripts.monitoreo.sismico_ign import SismicMonitor
 
 # Configurar logging
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
+
 
 class SistemaAlertasAvanzado:
     """Sistema avanzado optimizado para Termux"""
@@ -40,13 +41,15 @@ class SistemaAlertasAvanzado:
             # 3. Verificar influencia lunar
             fase_lunar = self.calculador_lunar.calcular_fase_lunar(datetime.now())
 
-            logging.info(f"✅ Datos obtenidos: {len(sismos)} sismos, {len(boyas)} boyas")
+            logging.info(
+                f"✅ Datos obtenidos: {len(sismos)} sismos, {len(boyas)} boyas"
+            )
 
             return {
-                'sismos': sismos,
-                'boyas': boyas,
-                'fase_lunar': fase_lunar,
-                'timestamp': datetime.now().isoformat()
+                "sismos": sismos,
+                "boyas": boyas,
+                "fase_lunar": fase_lunar,
+                "timestamp": datetime.now().isoformat(),
             }
 
         except Exception as e:
@@ -59,11 +62,11 @@ class SistemaAlertasAvanzado:
             riesgo = 0.0
 
             # Factores de riesgo simplificados
-            if datos.get('sismos'):
-                for sismo in datos['sismos']:
-                    if sismo['magnitud'] > 5.0:
+            if datos.get("sismos"):
+                for sismo in datos["sismos"]:
+                    if sismo["magnitud"] > 5.0:
                         riesgo += 0.4
-                    elif sismo['magnitud'] > 4.0:
+                    elif sismo["magnitud"] > 4.0:
                         riesgo += 0.2
 
             return min(riesgo, 1.0)
@@ -107,6 +110,7 @@ class SistemaAlertasAvanzado:
             except Exception as e:
                 logging.error(f"🔧 Error no crítico: {e}")
                 time.sleep(60)
+
 
 if __name__ == "__main__":
     sistema = SistemaAlertasAvanzado()

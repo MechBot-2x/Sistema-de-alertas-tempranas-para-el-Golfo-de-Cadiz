@@ -4,38 +4,42 @@
 """
 
 import logging
-from datetime import datetime
-import requests
 import os
+from datetime import datetime
+
+import requests
 from dotenv import load_dotenv
 
 # Cargar variables de entorno
 load_dotenv()
 
+
 class TelegramCosmicBot:
     """Bot de Telegram con conciencia cósmica para alertas"""
 
     def __init__(self):
-        self.token = os.getenv('TELEGRAM_BOT_TOKEN')
-        self.chat_id = os.getenv('TELEGRAM_CHAT_ID')
+        self.token = os.getenv("TELEGRAM_BOT_TOKEN")
+        self.chat_id = os.getenv("TELEGRAM_CHAT_ID")
         self.base_url = f"https://api.telegram.org/bot{self.token}"
 
         logging.info("🤖 Iniciando Bot Telegram Cósmico")
 
-    def enviar_mensaje_cosmico(self, mensaje, parse_mode='HTML'):
+    def enviar_mensaje_cosmico(self, mensaje, parse_mode="HTML"):
         """Enviar mensaje con formato cósmico"""
         try:
             if not self.token or not self.chat_id:
-                logging.warning("⚠️ Configuración Telegram no encontrada. Mensaje simulado.")
+                logging.warning(
+                    "⚠️ Configuración Telegram no encontrada. Mensaje simulado."
+                )
                 logging.info(f"📲 Mensaje cósmico: {mensaje}")
                 return True
 
             url = f"{self.base_url}/sendMessage"
             payload = {
-                'chat_id': self.chat_id,
-                'text': mensaje,
-                'parse_mode': parse_mode,
-                'disable_web_page_preview': True
+                "chat_id": self.chat_id,
+                "text": mensaje,
+                "parse_mode": parse_mode,
+                "disable_web_page_preview": True,
             }
 
             response = requests.post(url, json=payload, timeout=10)
@@ -52,18 +56,20 @@ class TelegramCosmicBot:
         """Enviar alerta cósmica estructurada"""
         try:
             emojis = {
-                'ALERTA_CÓSMICA_MAXIMA': '🚨🌌',
-                'ALERTA_CÓSMICA': '⚠️🌠',
-                'VIGILANCIA_CÓSMICA': '👀✨',
-                'OBSERVACIÓN_CÓSMICA': '🔍🌟',
-                'TRANQUILO_CÓSMICO': '☮️💫'
+                "ALERTA_CÓSMICA_MAXIMA": "🚨🌌",
+                "ALERTA_CÓSMICA": "⚠️🌠",
+                "VIGILANCIA_CÓSMICA": "👀✨",
+                "OBSERVACIÓN_CÓSMICA": "🔍🌟",
+                "TRANQUILO_CÓSMICO": "☮️💫",
             }
 
-            emoji = emojis.get(nivel, '🌊')
+            emoji = emojis.get(nivel, "🌊")
 
             mensaje = f"{emoji} <b>ALERTA {nivel}</b> {emoji}\n\n"
             mensaje += f"🕐 <i>{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</i>\n"
-            mensaje += f"💫 Energía cósmica: {datos['energia_cosmica']['nivel_energia']}\n"
+            mensaje += (
+                f"💫 Energía cósmica: {datos['energia_cosmica']['nivel_energia']}\n"
+            )
             mensaje += f"🌍 Sismos detectados: {datos['total_sismos']}\n"
             mensaje += f"🌊 Boyas operativas: {datos['boyas_operativas']}/3\n"
             mensaje += f"🌙 Fase lunar: {datos['fase_lunar']}\n\n"

@@ -3,8 +3,9 @@
 🌊 MONITOR DE DATOS MARINOS - Versión optimizada
 """
 
-from datetime import datetime
 import logging
+from datetime import datetime
+
 
 class MarineMonitor:
     """Monitor de datos marinos simplificado"""
@@ -18,12 +19,12 @@ class MarineMonitor:
             # Datos simulados para evitar dependencias externas
             boyas = [
                 {
-                    'nombre': 'Boyas Cádiz Simuladas',
-                    'latitud': 36.5,
-                    'longitud': -6.3,
-                    'altura_ola': 1.2,
-                    'periodo_ola': 7.8,
-                    'timestamp': datetime.now().isoformat()
+                    "nombre": "Boyas Cádiz Simuladas",
+                    "latitud": 36.5,
+                    "longitud": -6.3,
+                    "altura_ola": 1.2,
+                    "periodo_ola": 7.8,
+                    "timestamp": datetime.now().isoformat(),
                 }
             ]
 
@@ -38,11 +39,7 @@ class MarineMonitor:
         """Obtener datos de mareas simulados"""
         try:
             mareas = {
-                'cadiz': {
-                    'pleamar': '06:45',
-                    'bajamar': '12:30',
-                    'coeficiente': 85
-                }
+                "cadiz": {"pleamar": "06:45", "bajamar": "12:30", "coeficiente": 85}
             }
 
             logging.info("🌊 Datos de mareas simulados")

@@ -3,9 +3,10 @@
 🌙 INFLUENCIA LUNAR - Cálculos simplificados
 """
 
-from datetime import datetime
-import math
 import logging
+import math
+from datetime import datetime
+
 
 class LunarInfluenceCalculator:
     """Calculadora de influencia lunar simplificada"""
@@ -32,26 +33,26 @@ class LunarInfluenceCalculator:
                 nombre_fase = "Cuarto Menguante"
 
             return {
-                'fase': fase,
-                'nombre_fase': nombre_fase,
-                'iluminacion': int(abs(fase - 0.5) * 200)
+                "fase": fase,
+                "nombre_fase": nombre_fase,
+                "iluminacion": int(abs(fase - 0.5) * 200),
             }
 
         except Exception as e:
             logging.error(f"❌ Error calculando fase lunar: {e}")
-            return {'nombre_fase': 'Desconocida'}
+            return {"nombre_fase": "Desconocida"}
 
     def calcular_mareas_gravitacionales(self, fecha):
         """Calcular influencia gravitacional simplificada"""
         try:
             fase_data = self.calcular_fase_lunar(fecha)
-            fase = fase_data.get('fase', 0.5)
+            fase = fase_data.get("fase", 0.5)
 
             influencia = abs(math.sin(fase * 2 * math.pi))
 
             return {
-                'influencia_total': influencia,
-                'marea_alta_estimada': 2.0 + influencia * 1.5
+                "influencia_total": influencia,
+                "marea_alta_estimada": 2.0 + influencia * 1.5,
             }
 
         except Exception as e:

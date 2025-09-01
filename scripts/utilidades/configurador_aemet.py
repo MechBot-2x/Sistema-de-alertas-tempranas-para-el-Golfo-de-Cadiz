@@ -3,30 +3,32 @@
 🔧 CONFIGURADOR AEMET AUTOMÁTICO - Sistema inteligente de configuración
 """
 
+import logging
 import os
 import re
+
 from dotenv import load_dotenv
-import logging
 
 # Configurar logging
-logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
+
 
 class ConfiguradorAEMET:
     """Configurador automático para AEMET OpenData"""
 
     def __init__(self):
-        self.env_file = '.env'
+        self.env_file = ".env"
         load_dotenv()
 
     def verificar_api_key(self):
         """Verificar si la API Key está configurada y es válida"""
-        api_key = os.getenv('AEMET_API_KEY')
+        api_key = os.getenv("AEMET_API_KEY")
 
-        if not api_key or api_key == 'opcional' or api_key == 'TU_API_KEY_REAL':
+        if not api_key or api_key == "opcional" or api_key == "TU_API_KEY_REAL":
             return False, "❌ API Key no configurada"
 
         # Verificar formato básico de API Key (normalmente JWT)
-        if api_key.startswith('eyJ') and len(api_key) > 50:
+        if api_key.startswith("eyJ") and len(api_key) > 50:
             return True, "✅ API Key configurada correctamente"
         else:
             return False, "⚠️ API Key con formato sospechoso"
@@ -36,7 +38,7 @@ class ConfiguradorAEMET:
         try:
             # Leer el archivo .env actual
             if os.path.exists(self.env_file):
-                with open(self.env_file, 'r') as f:
+                with open(self.env_file, "r") as f:
                     lineas = f.readlines()
             else:
                 lineas = []
@@ -46,18 +48,18 @@ class ConfiguradorAEMET:
             nuevas_lineas = []
 
             for linea in lineas:
-                if linea.startswith('AEMET_API_KEY='):
-                    nuevas_lineas.append(f'AEMET_API_KEY={api_key}\n')
+                if linea.startswith("AEMET_API_KEY="):
+                    nuevas_lineas.append(f"AEMET_API_KEY={api_key}\n")
                     clave_encontrada = True
                 else:
                     nuevas_lineas.append(linea)
 
             # Si no existía, añadirla
             if not clave_encontrada:
-                nuevas_lineas.append(f'AEMET_API_KEY={api_key}\n')
+                nuevas_lineas.append(f"AEMET_API_KEY={api_key}\n")
 
             # Escribir el archivo actualizado
-            with open(self.env_file, 'w') as f:
+            with open(self.env_file, "w") as f:
                 f.writelines(nuevas_lineas)
 
             # Recargar variables de entorno
@@ -77,14 +79,14 @@ class ConfiguradorAEMET:
 
     def mostrar_estado_actual(self):
         """Mostrar el estado actual de la configuración"""
-        api_key = os.getenv('AEMET_API_KEY', 'No configurada')
+        api_key = os.getenv("AEMET_API_KEY", "No configurada")
 
         print("=" * 50)
         print("🔧 ESTADO CONFIGURACIÓN AEMET")
         print("=" * 50)
 
         # Ocultar parte de la API Key por seguridad
-        if api_key and api_key != 'opcional' and api_key != 'TU_API_KEY_REAL':
+        if api_key and api_key != "opcional" and api_key != "TU_API_KEY_REAL":
             api_key_oculta = api_key[:20] + "..." + api_key[-10:]
             print(f"🔑 API Key: {api_key_oculta}")
         else:
@@ -104,14 +106,15 @@ class ConfiguradorAEMET:
 
         print("=" * 50)
 
+
 def extraer_api_key_desde_texto(texto):
     """Intentar extraer una API Key de un texto"""
     # Patrones comunes para API Keys
     patrones = [
-        r'eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+',  # JWT standard
-        r'api_key["\']?\s*[:=]\s*["\']([^"\']+)["\']',         # JSON format
-        r'clave["\']?\s*[:=]\s*["\']([^"\']+)["\']',           # Spanish format
-        r'[a-zA-Z0-9_-]{40,}',                                 # Long alphanumeric
+        r"eyJ[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+",  # JWT standard
+        r'api_key["\']?\s*[:=]\s*["\']([^"\']+)["\']',  # JSON format
+        r'clave["\']?\s*[:=]\s*["\']([^"\']+)["\']',  # Spanish format
+        r"[a-zA-Z0-9_-]{40,}",  # Long alphanumeric
     ]
 
     for patron in patrones:
@@ -120,6 +123,7 @@ def extraer_api_key_desde_texto(texto):
             return coincidencias[0]
 
     return None
+
 
 # Función principal de configuración
 def configurar_aemet_interactivo():
@@ -185,6 +189,7 @@ def configurar_aemet_interactivo():
 
     else:
         print("❌ Opción no válida")
+
 
 if __name__ == "__main__":
     configurar_aemet_interactivo()
