@@ -9,8 +9,8 @@ from scripts.config.tokens import token_manager
 
 def enviar_alerta_telegram(mensaje):
     """Envía alerta por Telegram (GRATIS)"""
-    bot_token = token_manager.get_token("telegram", "bot_token")
-    chat_id = token_manager.get_token("telegram", "chat_id")
+    bot_token = token_manager.get_token("telegram", "8478499112:AAGxqzYm4I-3Zyc9XCXIkE3mLOl8pXFOM00")
+    chat_id = token_manager.get_token("telegram", "8350588401")
 
     if not bot_token or not chat_id:
         print("❌ Telegram no configurado correctamente")
