@@ -1,0 +1,3 @@
+[submodule "MechMind-IA"]
+    path = MechMind-IA
+    url = https://github.com/MechBot-2x/Sistema-de-alertas-tempranas-para-el-Golfo-de-Cadiz.git
