@@ -92,8 +92,7 @@ if __name__ == "__main__":
     if respuesta in ["s", "si", "sí", "y", "yes"]:
         print("🚀 Iniciando sistema de monitorización...")
         try:
-            from scripts.monitoreo.sistema_principal_mejorado import \
-                SistemaResiliente
+            from scripts.monitoreo.sistema_principal_mejorado import SistemaResiliente
 
             sistema = SistemaResiliente()
             sistema.ejecutar_continuamente()
