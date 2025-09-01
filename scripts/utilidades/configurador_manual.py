@@ -7,7 +7,6 @@ import logging
 import os
 import re
 
-from dotenv import load_dotenv
 
 logging.basicConfig(level=logging.INFO)
 

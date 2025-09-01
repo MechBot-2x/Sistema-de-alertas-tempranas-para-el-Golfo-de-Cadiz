@@ -3,12 +3,8 @@
 🌍 MONITOR SÍSMICO IGN - Versión optimizada para Termux
 """
 
-import json
-import logging
 from datetime import datetime, timedelta
-
-import requests
-
+import logging
 
 class SismicMonitor:
     """Monitor de actividad sísmica optimizado"""
@@ -23,28 +19,29 @@ class SismicMonitor:
             # Simulación de datos para evitar problemas de conexión
             sismos_ejemplo = [
                 {
-                    "fecha": (datetime.now() - timedelta(hours=2)).strftime("%Y-%m-%d"),
-                    "hora": "10:30:45",
-                    "latitud": 36.8,
-                    "longitud": -7.2,
-                    "profundidad": 12.5,
-                    "magnitud": 2.8,
-                    "localizacion": "Golfo de Cádiz",
+                    'fecha': (datetime.now() - timedelta(hours=2)).strftime('%Y-%m-%d'),
+                    'hora': '10:30:45',
+                    'latitud': 36.8,
+                    'longitud': -7.2,
+                    'profundidad': 12.5,
+                    'magnitud': 2.8,
+                    'localizacion': 'Golfo de Cádiz'
                 },
                 {
-                    "fecha": (datetime.now() - timedelta(hours=5)).strftime("%Y-%m-%d"),
-                    "hora": "07:45:12",
-                    "latitud": 37.1,
-                    "longitud": -6.9,
-                    "profundidad": 8.3,
-                    "magnitud": 3.2,
-                    "localizacion": "Costa de Huelva",
-                },
+                    'fecha': (datetime.now() - timedelta(hours=5)).strftime('%Y-%m-%d'),
+                    'hora': '07:45:12',
+                    'latitud': 37.1,
+                    'longitud': -6.9,
+                    'profundidad': 8.3,
+                    'magnitud': 3.2,
+                    'localizacion': 'Costa de Huelva'
+                }
             ]
 
             # Filtrar por magnitud
             sismos_filtrados = [
-                s for s in sismos_ejemplo if s["magnitud"] >= magnitud_minima
+                s for s in sismos_ejemplo
+                if s['magnitud'] >= magnitud_minima
             ]
 
             logging.info(f"📡 Simulados {len(sismos_filtrados)} sismos (modo prueba)")
@@ -60,9 +57,8 @@ class SismicMonitor:
             # Coordenadas del Golfo de Cádiz
             sismos = self.obtener_ultimos_sismos(dias)
             sismos_golfo = [
-                s
-                for s in sismos
-                if 35.5 <= s["latitud"] <= 37.5 and -8.0 <= s["longitud"] <= -5.0
+                s for s in sismos
+                if 35.5 <= s['latitud'] <= 37.5 and -8.0 <= s['longitud'] <= -5.0
             ]
 
             logging.info(f"🌊 Encontrados {len(sismos_golfo)} sismos en Golfo de Cádiz")

@@ -3,19 +3,18 @@
 🎯 SISTEMA PRINCIPAL MEJORADO - Funciona incluso sin AEMET
 """
 
-import logging
 import time
+import logging
 from datetime import datetime
-
 from scripts.datos.aemet_client import MonitorAEMETGolfoCadiz
-from scripts.monitoreo.boyas_avanzadas_2025 import BoyasAvanzadas2025
 from scripts.monitoreo.sismico_cosmico import SismicMonitorCosmico
+from scripts.monitoreo.boyas_avanzadas_2025 import BoyasAvanzadas2025
 
 # Configurar logging
 logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
 )
-
 
 class SistemaResiliente:
     """Sistema que funciona incluso cuando las APIs fallan"""
@@ -61,17 +60,17 @@ class SistemaResiliente:
         alertas = []
 
         # Alertas meteorológicas
-        if "alertas" in meteo:
-            alertas.extend(meteo["alertas"])
+        if 'alertas' in meteo:
+            alertas.extend(meteo['alertas'])
 
         # Alertas sísmicas
         for sismo in sismos:
-            if sismo["magnitud"] > 4.0:
+            if sismo['magnitud'] > 4.0:
                 alertas.append(f"🌍 Sismo M{sismo['magnitud']} en {sismo['lugar']}")
 
         # Alertas de boyas
         for boya in boyas:
-            if boya.get("altura_ola", 0) > 2.5:
+            if boya.get('altura_ola', 0) > 2.5:
                 alertas.append(f"🌊 Ola alta {boya['altura_ola']}m en {boya['nombre']}")
 
         # Mostrar alertas si las hay
@@ -83,9 +82,9 @@ class SistemaResiliente:
 
     def _mostrar_estado_sistema(self, meteo, sismos, boyas):
         """Mostrar estado resumido del sistema"""
-        print("\n" + "=" * 50)
+        print("\n" + "="*50)
         print("🌊 ESTADO SISTEMA - Golfo de Cádiz")
-        print("=" * 50)
+        print("="*50)
 
         print(f"🌤️ Meteorología: {len(meteo.get('estaciones', {}))} estaciones")
         print(f"   Estado: {meteo.get('estado_conexion', 'DESCONOCIDO')}")
@@ -94,12 +93,12 @@ class SistemaResiliente:
         print(f"🌊 Boyas: {len(boyas)} boyas operativas")
 
         # Mostrar temperatura de Cádiz si disponible
-        if "cadiz" in meteo.get("estaciones", {}):
-            temp = meteo["estaciones"]["cadiz"].get("temperatura", "N/A")
+        if 'cadiz' in meteo.get('estaciones', {}):
+            temp = meteo['estaciones']['cadiz'].get('temperatura', 'N/A')
             print(f"📊 Temp Cádiz: {temp}°C")
 
         print(f"⏰ Última actualización: {datetime.now().strftime('%H:%M:%S')}")
-        print("=" * 50 + "\n")
+        print("="*50 + "\n")
 
     def ejecutar_continuamente(self):
         """Ejecución continua del sistema resiliente"""
@@ -109,9 +108,7 @@ class SistemaResiliente:
         while True:
             try:
                 ciclo += 1
-                print(
-                    f"\n🔄 CICLO #{ciclo} - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-                )
+                print(f"\n🔄 CICLO #{ciclo} - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
                 self.ejecutar_ciclo_inteligente()
 
@@ -125,16 +122,14 @@ class SistemaResiliente:
                 print(f"🔧 Error no crítico: {e}")
                 time.sleep(60)  # Reintentar en 1 minuto
 
-
 if __name__ == "__main__":
     # Probamos la conexión primero
     from scripts.datos.aemet_client import probar_conexion_aemet
-
     probar_conexion_aemet()
 
-    print("\n" + "=" * 50)
+    print("\n" + "="*50)
     print("🚀 INICIANDO SISTEMA DE MONITORIZACIÓN")
-    print("=" * 50)
+    print("="*50)
 
     # Iniciar sistema
     sistema = SistemaResiliente()

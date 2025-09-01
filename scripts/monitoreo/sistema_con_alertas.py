@@ -4,17 +4,15 @@
 """
 
 import logging
-import time
 from datetime import datetime
-
-from scripts.alertas.telegram_advanced import TelegramAdvancedBot
 from scripts.monitoreo.sistema_principal_mejorado import SistemaResiliente
+from scripts.alertas.telegram_advanced import TelegramAdvancedBot
 
 # Configurar logging
 logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
 )
-
 
 class SistemaConAlertas(SistemaResiliente):
     """Sistema evolucionado con alertas por Telegram"""
@@ -31,25 +29,22 @@ class SistemaConAlertas(SistemaResiliente):
 
     def _generar_alertas_integradas(self, analisis):
         """Generar alertas integradas con Telegram"""
-        alertas = analisis.get("alertas", [])
+        alertas = analisis.get('alertas', [])
 
         if alertas:
             for alerta in alertas:
                 logging.warning(f"⚠️ {alerta}")
 
                 # Enviar alerta por Telegram si es importante
-                if any(
-                    keyword in alerta
-                    for keyword in ["ALERTA", "Sismo", "Ola alta", "Viento fuerte"]
-                ):
+                if any(keyword in alerta for keyword in ['ALERTA', 'Sismo', 'Ola alta', 'Viento fuerte']):
                     self.bot_telegram.enviar_alerta_profesional(
                         "AUTOMÁTICA",
                         alerta,
                         {
                             "Riesgo Total": f"{analisis['riesgo_total']:.2f}",
-                            "Tipo Alerta": analisis["nivel_alerta"],
-                            "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                        },
+                            "Tipo Alerta": analisis['nivel_alerta'],
+                            "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        }
                     )
 
     def ejecutar_ciclo_completo(self):
@@ -92,7 +87,6 @@ class SistemaConAlertas(SistemaResiliente):
         except Exception as e:
             logging.error(f"❌ Error enviando resumen: {e}")
 
-
 def ejecutar_sistema_completo():
     """Ejecutar el sistema evolucionado"""
     print("=" * 60)
@@ -108,9 +102,8 @@ def ejecutar_sistema_completo():
         # Enviar mensaje de cierre
         sistema.bot_telegram.enviar_alerta_profesional(
             "SISTEMA",
-            "Sistema de monitorización detenido manualmente. Seguridad reactivada en próximo inicio.",
+            "Sistema de monitorización detenido manualmente. Seguridad reactivada en próximo inicio."
         )
-
 
 if __name__ == "__main__":
     ejecutar_sistema_completo()

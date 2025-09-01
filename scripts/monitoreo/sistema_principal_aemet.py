@@ -3,21 +3,22 @@
 🎯 SISTEMA PRINCIPAL CON AEMET OPENDATA - Conexión profesional
 """
 
-import logging
 import time
+import logging
 from datetime import datetime
-
 from scripts.datos.aemet_client import AEMETGolfoCadiz
-from scripts.monitoreo.boyas_avanzadas_2025 import BoyasAvanzadas2025
 from scripts.monitoreo.sismico_cosmico import SismicMonitorCosmico
+from scripts.monitoreo.boyas_avanzadas_2025 import BoyasAvanzadas2025
 
 # Configurar logging
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler("logs/sistema_aemet.log"), logging.StreamHandler()],
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('logs/sistema_aemet.log'),
+        logging.StreamHandler()
+    ]
 )
-
 
 class SistemaAEMETCompleto:
     """Sistema completo con integración AEMET OpenData"""
@@ -42,7 +43,6 @@ class SistemaAEMETCompleto:
         try:
             # Usar el cliente básico para verificación
             from scripts.datos.aemet_client import AEMETClient
-
             client = AEMETClient()
             return client.verificar_conexion()
         except Exception as e:
@@ -68,16 +68,15 @@ class SistemaAEMETCompleto:
     def _datos_meteo_simulados(self):
         """Datos simulados como fallback"""
         from datetime import datetime
-
         return {
-            "timestamp": datetime.now().isoformat(),
-            "estado": "SIMULADO",
-            "temperatura": 22.5,
-            "viento_velocidad": 15.3,
-            "viento_direccion": 270,
-            "presion": 1013.2,
-            "humedad": 65,
-            "fuente": "SISTEMA_RESERVA",
+            'timestamp': datetime.now().isoformat(),
+            'estado': 'SIMULADO',
+            'temperatura': 22.5,
+            'viento_velocidad': 15.3,
+            'viento_direccion': 270,
+            'presion': 1013.2,
+            'humedad': 65,
+            'fuente': 'SISTEMA_RESERVA'
         }
 
     def ejecutar_ciclo_completo(self):
@@ -113,43 +112,43 @@ class SistemaAEMETCompleto:
         alertas = []
 
         # Análisis meteorológico
-        if meteo.get("viento_velocidad", 0) > 50:  # km/h
+        if meteo.get('viento_velocidad', 0) > 50:  # km/h
             riesgo += 0.3
             alertas.append("🌬️ Viento muy fuerte")
 
-        if meteo.get("temperatura", 0) > 35:
+        if meteo.get('temperatura', 0) > 35:
             riesgo += 0.1
             alertas.append("🌡️ Temperatura muy alta")
 
         # Análisis sísmico
         for sismo in sismos:
-            if sismo["magnitud"] > 4.0:
+            if sismo['magnitud'] > 4.0:
                 riesgo += 0.4
                 alertas.append(f"🌍 Sismo M{sismo['magnitud']}")
 
         # Análisis de boyas
         for boya in boyas:
-            if boya.get("altura_ola", 0) > 3.0:
+            if boya.get('altura_ola', 0) > 3.0:
                 riesgo += 0.2
                 alertas.append(f"🌊 Ola alta: {boya['altura_ola']}m")
 
         return {
-            "riesgo_total": min(riesgo, 1.0),
-            "alertas": alertas,
-            "timestamp": datetime.now().isoformat(),
-            "total_datos": len(meteo) + len(sismos) + len(boyas),
+            'riesgo_total': min(riesgo, 1.0),
+            'alertas': alertas,
+            'timestamp': datetime.now().isoformat(),
+            'total_datos': len(meteo) + len(sismos) + len(boyas)
         }
 
     def _generar_alertas_integradas(self, analisis):
         """Generar alertas basadas en análisis integrado"""
-        if analisis["riesgo_total"] > 0.6:
+        if analisis['riesgo_total'] > 0.6:
             mensaje = f"🚨 ALERTA INTEGRADA - Riesgo: {analisis['riesgo_total']:.2f}"
             logging.warning(mensaje)
 
             # Aquí integraríamos con Telegram
             # self._enviar_alerta_telegram(mensaje)
 
-        for alerta in analisis["alertas"]:
+        for alerta in analisis['alertas']:
             logging.warning(f"⚠️ {alerta}")
 
     def ejecutar_continuamente(self):
@@ -172,11 +171,9 @@ class SistemaAEMETCompleto:
                 logging.error(f"🔧 Error no crítico: {e}")
                 time.sleep(300)  # Reintentar en 5 minutos
 
-
 if __name__ == "__main__":
     # Ejecutar debug primero
     from scripts.datos.aemet_client import debug_aemet
-
     debug_aemet()
 
     # Iniciar sistema completo
