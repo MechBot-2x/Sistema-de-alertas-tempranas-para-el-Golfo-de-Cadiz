@@ -22,7 +22,7 @@ Sistema profesional de monitorización y alertas para el Golfo de Cádiz.
 ## 📦 Instalación
 
 ```bash
-git clone https://github.com/tuusuario/sistema-alertas-golfo-cadiz.git
+git clone https://github.com/mechmind-dwv/Sistema-de-alertas-tempranas-para-el-Golfo-de-Cadiz.git
 cd sistema-alertas-golfo-cadiz
 
 python -m venv venv
